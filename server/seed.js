@@ -3,8 +3,6 @@
 const { db, User, Post } = require('./db');
 const { PostList, UserList } = require('./testData');
 
-
-
 async function seed() {
   try {
     await db.sync({ force: true }); // clears db and matches models to tables
@@ -23,6 +21,7 @@ async function seed() {
         return User.create(user);
       })
     );
+    
   } catch (error) {
     console.error('syncing dummy data did not work', error);
   }

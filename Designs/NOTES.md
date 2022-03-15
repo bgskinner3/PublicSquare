@@ -7,3 +7,7 @@
 - build models and associations for the messaging app. 
 
 - added shards react 
+
+-- creaed repo
+- commmit new file 
+- create schema for messages 

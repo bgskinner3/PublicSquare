@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 const { User } = require('../db/models/User');
 const { Post } = require('../db/models/Post');
+const { Message } = require('../db/models/Message');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'f1BtnWgD3VKY';
@@ -29,6 +30,24 @@ const resolvers = {
       const id = args.id;
       const post = await Post.findByPk(id);
       return post;
+    },
+    message: async (parent, args, context) => {
+      const id = args.id;
+      const message = await Message.findOne({
+        where: {
+          id: id,
+        },
+      });
+      return message;
+    },
+    messages: async (parent, args, context) => {
+      const id = args.id;
+      const messages = await Message.findAll({
+        where: {
+          userId: id,
+        },
+      });
+      return messages;
     },
   },
   User: {
@@ -171,3 +190,9 @@ const resolvers = {
 };
 
 module.exports = { resolvers };
+// // use to find all the user messages by userID
+// const messages = await Message.findAll({
+//   where: {
+//     userId: id
+//   }
+// })

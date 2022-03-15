@@ -62,13 +62,21 @@ export const GET_SINGLE_POST = gql`
   }
 `;
 
- export const LOGIN = gql`
-   query Login($username: String!, $password: String!) {
-     login(username: $username, password: $password) {
-       userId
-       tokenExpiration
-       token
-     }
-   }
- `;
-  
+export const LOGIN = gql`
+  query Login($username: String!, $password: String!) {
+    login(username: $username, password: $password) {
+      userId
+      tokenExpiration
+      token
+    }
+  }
+`;
+
+export const GET_MESSAGES = gql`
+  subscription {
+    messages {
+      id
+      content
+      userId
+  }
+`;

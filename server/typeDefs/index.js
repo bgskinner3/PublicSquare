@@ -25,11 +25,20 @@ const typeDefs = gql`
     pollresults: Boolean
     userId: ID
   }
+  type Message {
+  id: ID!
+  content: String!
+  userId: ID!
+  currentChatReceiverId: ID
+  threadId: ID
+  }
   type Query {
     users: [User!]!
     user(token: String!): User!
     posts: [Post!]!
     post(id: ID!): Post!
+    message(id: ID!): Message!
+    messages: [Message!]!
   }
   input UserInput {
     email: String!
